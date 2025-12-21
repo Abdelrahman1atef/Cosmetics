@@ -1,0 +1,129 @@
+// ignore_for_file: inference_failure_on_instance_creation
+
+import 'package:cosmetics/core/widgets/custom_button.dart';
+import 'package:cosmetics/core/widgets/custom_dropdownmenu.dart';
+import 'package:cosmetics/views/forget_password.dart';
+import 'package:cosmetics/views/register.dart';
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+
+import '../core/widgets/custom_textformfield.dart';
+import 'main/main.dart';
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: ColorScheme.of(context).primary,
+      body: SingleChildScrollView(
+        padding: const EdgeInsetsGeometry.directional(
+          top: kToolbarHeight + 50,
+          bottom: kToolbarHeight - 40,
+          start: 13,
+          end: 13,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              margin: const EdgeInsetsGeometry.directional(end: 20),
+              child: Image.asset("assets/images/login_img.png", width: 380),
+            ),
+            Text("Login Now", style: TextTheme.of(context).titleLarge),
+            const Gap(14),
+            Text(
+              "Please enter the details below to continue",
+              style: TextTheme.of(context).titleMedium,
+            ),
+            const Gap(25),
+            const Form(
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      ///Todo style dropdown menu
+                      ///Todo add validator
+                      CustomDropdownMenu(),
+                      Gap(6),
+                      Expanded(
+                        ///Todo add validator
+                        child: CustomTextFormField(labelText: "Phone Number"),
+                      ),
+                    ],
+                  ),
+                  Gap(16),
+
+                  ///Todo add validator
+                  CustomTextFormField(labelText: "Your Password"),
+                ],
+              ),
+            ),
+            const Gap(20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                InkWell(
+                  ///Todo add Forget password screen nav
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ForgetPasswordScreen(),
+                    ),
+                  ),
+                  child: Text(
+                    "Forget Password?",
+                    style: TextTheme.of(context).labelMedium,
+                  ),
+                ),
+              ],
+            ),
+            const Gap(40),
+            CustomButton(
+              isChildIcon: false,
+
+              ///Todo add validator to nav
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MainScreen()),
+                );
+              },
+              child: Text("Login", style: TextTheme.of(context).bodyMedium),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsetsGeometry.symmetric(vertical: 20),
+        child: GestureDetector(
+          onTap: () => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const RegisterScreen()),
+          ),
+          child: RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "Don’t have an account?",
+                  style: TextTheme.of(context).titleMedium?.copyWith(
+                    fontSize: 18,
+                    color: ColorScheme.of(context).secondary,
+                  ),
+                ),
+                const WidgetSpan(child: SizedBox(width: 10)),
+                TextSpan(
+                  text: "Register",
+                  style: TextTheme.of(context).labelMedium,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

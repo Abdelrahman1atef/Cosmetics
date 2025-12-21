@@ -1,0 +1,210 @@
+// ignore_for_file: inference_failure_on_instance_creation
+
+import 'package:cosmetics/core/widgets/custom_button.dart';
+import 'package:cosmetics/views/main/main.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
+
+import 'login.dart';
+
+class VerifyCodeScreen extends StatelessWidget {
+  const VerifyCodeScreen({super.key, required this.isRegister});
+
+  final bool isRegister;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: ColorScheme.of(context).primary,
+      body: SingleChildScrollView(
+        padding: const EdgeInsetsGeometry.directional(
+          top: kToolbarHeight + 50,
+          bottom: kToolbarHeight - 40,
+          start: 13,
+          end: 13,
+        ),
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset("assets/images/app_icon.svg", width: 100),
+              const Gap(40),
+              Text("Verify Code", style: TextTheme.of(context).titleLarge),
+              const Gap(40),
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "We just sent a 4-digit verification code to\n",
+                      style: TextTheme.of(context).titleMedium,
+                    ),
+                    TextSpan(
+                      text: "+20 1022658997",
+                      style: TextTheme.of(context).displayMedium,
+                    ),
+                    TextSpan(
+                      text: ". Enter the code in the box below to continue.",
+                      style: TextTheme.of(context).titleMedium,
+                    ),
+                  ],
+                ),
+              ),
+              const Gap(50),
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Text(
+                      "Edit the number",
+                      style: TextTheme.of(context).labelMedium,
+                    ),
+                  ),
+                ],
+              ),
+              const Gap(50),
+              Padding(
+                padding: const EdgeInsetsGeometry.symmetric(horizontal: 60),
+                child: PinCodeTextField(
+                  appContext: context,
+                  length: 4,
+                  textStyle: TextTheme.of(context).displayMedium?.copyWith(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                  ),
+                  keyboardType: TextInputType.number,
+                  animationType: AnimationType.fade,
+                  hintCharacter: "–",
+                  hintStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontSize: 25,
+                    fontVariations: <FontVariation>[
+                      const FontVariation('wght', 700),
+                    ],
+                  ),
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  cursorColor: Theme.of(context).hintColor,
+                  cursorWidth: 3,
+                  pinTheme: PinTheme(
+                    fieldWidth: 60,
+                    fieldHeight: 60,
+                    borderRadius: BorderRadius.circular(12),
+                    shape: PinCodeFieldShape.box,
+                    inactiveColor: Theme.of(context).hintColor,
+                    selectedColor: Theme.of(context).colorScheme.error,
+                    activeColor: Theme.of(context).colorScheme.error,
+                  ),
+                ),
+              ),
+              const Gap(50),
+              GestureDetector(
+                onTap: () {},
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: "Didn’t receive a code? ",
+                        style: TextTheme.of(context).titleMedium?.copyWith(
+                          fontSize: 18,
+                          color: ColorScheme.of(context).secondary,
+                        ),
+                      ),
+                      TextSpan(
+                        text: " Resend",
+                        style: TextTheme.of(context).labelMedium?.copyWith(
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.error.withValues(alpha: 0.7),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const Gap(50),
+
+              CustomButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      shape: RoundedSuperellipseBorder(
+                        borderRadius: BorderRadiusGeometry.circular(30),
+                      ),
+                      constraints: const BoxConstraints(
+                        minWidth: 360,
+                        minHeight: 343,
+                      ),
+                      icon: CircleAvatar(
+                        backgroundColor: Theme.of(
+                          context,
+                        ).colorScheme.error.withValues(alpha: 0.5),
+                        radius: 60,
+                        child: CircleAvatar(
+                          backgroundColor: Theme.of(
+                            context,
+                          ).colorScheme.error.withValues(alpha: 0.7),
+                          radius: 50,
+                          child: CircleAvatar(
+                            backgroundColor: Theme.of(
+                              context,
+                            ).colorScheme.error,
+                            radius: 40,
+                            child: SvgPicture.asset(
+                              "assets/svgs/success_task.svg",
+                            ),
+                          ),
+                        ),
+                      ),
+                      alignment: Alignment.center,
+                      title: Text(
+                        isRegister ? "Account Activated!" : "Password Created!",
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                      content: Text(
+                        isRegister
+                            ? "Congratulations! Your account has been successfully activated"
+                            : "Congratulations! Your password has been successfully created",
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      actions: [
+                        CustomButton(
+                          width: 90,
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => isRegister
+                                    ? const MainScreen()
+                                    : const LoginScreen(),
+                              ),
+                              (route) => false,
+
+                              ///todo change text base on nav come form like if from register show go to home and if form forget my password show Return to login
+                            );
+                          },
+                          child: Text(
+                            isRegister ? "Go to home" : "Return to login",
+                            style: TextTheme.of(context).bodyMedium,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                child: Text("Done", style: TextTheme.of(context).bodyMedium),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
