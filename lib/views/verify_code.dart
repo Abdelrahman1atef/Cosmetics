@@ -31,7 +31,7 @@ class VerifyCodeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset("assets/images/app_icon.svg", width: 100),
+              SvgPicture.asset("assets/svgs/app_icon.svg", width: 100),
               const Gap(40),
               Text("Verify Code", style: TextTheme.of(context).titleLarge),
               const Gap(40),
@@ -100,6 +100,7 @@ class VerifyCodeScreen extends StatelessWidget {
                 ),
               ),
               const Gap(50),
+              ///todo add timer for resend code
               GestureDetector(
                 onTap: () {},
                 child: RichText(
@@ -156,7 +157,7 @@ class VerifyCodeScreen extends StatelessWidget {
                             ).colorScheme.error,
                             radius: 40,
                             child: SvgPicture.asset(
-                              "assets/svgs/success_task.svg",
+                              "assets/svgs/done_task.svg",
                             ),
                           ),
                         ),
@@ -186,8 +187,6 @@ class VerifyCodeScreen extends StatelessWidget {
                                     : const LoginScreen(),
                               ),
                               (route) => false,
-
-                              ///todo change text base on nav come form like if from register show go to home and if form forget my password show Return to login
                             );
                           },
                           child: Text(

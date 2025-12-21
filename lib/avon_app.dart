@@ -1,4 +1,5 @@
 import 'package:cosmetics/views/login.dart';
+import 'package:cosmetics/views/main/main.dart';
 import 'package:flutter/material.dart';
 
 
@@ -9,11 +10,12 @@ class AvonApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
+      home: const MainScreen(),
       color: const Color(0xFFD9D9D9),
       theme: ThemeData(
         useMaterial3: true,
         fontFamily: "Montserrat",
+
         textTheme: const TextTheme(
           titleLarge: TextStyle(
             fontFamily: 'Montserrat',
@@ -26,6 +28,18 @@ class AvonApp extends StatelessWidget {
             fontSize: 18,
             color: Color(0xFF8E8EA9),
             fontVariations: <FontVariation>[FontVariation('wght', 400)],
+          ),
+          headlineMedium: TextStyle(
+            fontFamily: 'Montserrat',
+            fontSize: 18,
+            fontVariations: <FontVariation>[FontVariation('wght', 700)],
+            color: Color(0xFF62322D),
+          ),
+          displayLarge: TextStyle(
+            fontFamily: 'Montserrat',
+            fontSize: 20,
+            color: Color(0xFF434C6D),
+            fontVariations: <FontVariation>[FontVariation('wght', 700)],
           ),
           displayMedium: TextStyle(
             fontFamily: 'Montserrat',
@@ -48,6 +62,7 @@ class AvonApp extends StatelessWidget {
         ),
         useSystemColors: true,
         hintColor: const Color(0xFF8E8EA9),
+        scaffoldBackgroundColor:const Color(0xFFD9D9D9),
         colorScheme: const ColorScheme(
           brightness: Brightness.light,
           primary: Color(0xFFD9D9D9),
@@ -56,8 +71,8 @@ class AvonApp extends StatelessWidget {
           onSecondary: Color(0xFF434C6D),
           error: Color(0xFFD75D72),
           onError: Color(0xFFD75D72),
-          surface: Color(0xFFD9D9D9),
-          onSurface: Color(0xFFD9D9D9),
+          surface: Color(0xFFB3B3C1),
+          onSurface: Color(0xFFB3B3C1),
         ),
       ),
     );

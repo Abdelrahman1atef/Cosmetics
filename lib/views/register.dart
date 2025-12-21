@@ -27,7 +27,7 @@ class RegisterScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset("assets/images/app_icon.svg", width: 100),
+            SvgPicture.asset("assets/svgs/app_icon.svg", width: 100),
             const Gap(40),
             Text("Create Account", style: TextTheme.of(context).titleLarge),
             const Gap(80),

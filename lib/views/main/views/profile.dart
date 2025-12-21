@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+
+import '../../../core/widgets/app_bar.dart';
+
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: const CustomAppBar(
+        haveSearchBar: false,
+        haveTitle: true,
+        title: "My Cart",
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Gap(50),
+            Padding(
+              padding: const EdgeInsetsGeometry.all(13),
+              child: Stack(
+                children: [Image.asset("assets/images/temp_home_image_ad.png")],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
