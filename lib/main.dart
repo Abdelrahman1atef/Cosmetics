@@ -1,9 +1,10 @@
+import 'package:cosmetics/views/check_out.dart';
 import 'package:cosmetics/views/home/view.dart';
 import 'package:cosmetics/views/register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'features/auth/register.dart';
+import 'features/auth/register/cubit.dart';
 
 void main (){
   runApp(const AvonApp());
@@ -21,7 +22,7 @@ class AvonApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const RegisterPage (),
+        home: const MainView(),
         theme: ThemeData(
           useMaterial3: true,
           fontFamily: "Montserrat",

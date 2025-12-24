@@ -276,25 +276,25 @@ class CartPage extends StatelessWidget {
 
 final _cartItems = [
   _CartItem(
-    image: "image1.jpg",
+    image: "https://i.pinimg.com/originals/11/f5/22/11f522c7f8ead5519a4b102723f0a89c.jpg",
     title: "Note Cosmetics",
     description: "Ultra rich mascara for lashes",
     price: 350,
   ),
   _CartItem(
-    image: "image2.jpg",
+    image: "https://avatars.mds.yandex.net/i?id=e2b53c18ed4ca3f5b84c75ff45a665d658c6c27f-3986150-images-thumbs&n=13",
     title: "ARTDECO",
     description: "Bronzer - 02 ",
     price: 490,
   ),
   _CartItem(
-    image: "image3.jpg",
+    image: "https://avatars.mds.yandex.net/i?id=dc028fbbe5bf0ac8faa3f09903946f628cee0839-11865037-images-thumbs&n=13",
     title: "Fendi",
     description: "Lipstick - shade 9",
     price: 260,
   ),
   _CartItem(
-    image: "image4.jpg",
+    image: "https://avatars.mds.yandex.net/i?id=acbcae6e0f0d544566bcc7de26a6ad8f65266309-12619185-images-thumbs&n=13",
     title: "Channel",
     description: "L’eau de perfum N5",
     price: 1500,

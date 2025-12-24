@@ -1,5 +1,4 @@
 // ignore_for_file: inference_failure_on_instance_creation
-import 'package:cosmetics/features/auth/register.dart';
 import 'package:cosmetics/views/login.dart';
 import 'package:cosmetics/views/verify_code.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +7,8 @@ import '../core/widgets/app_Image.dart';
 import '../core/widgets/custom_button.dart';
 import '../core/widgets/custom_dropdownmenu.dart';
 import '../core/widgets/custom_textformfield.dart';
+import '../features/auth/register/cubit.dart';
+import '../features/auth/register/model.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});

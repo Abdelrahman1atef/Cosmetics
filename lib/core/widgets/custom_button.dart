@@ -23,36 +23,30 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:padding?? const EdgeInsets.all(0.0),
-      child: TextButton(
-        onPressed: onPressed,
-        style: ButtonStyle(
-          elevation: const WidgetStatePropertyAll(0),
-          alignment: AlignmentGeometry.center,
-          padding: isChildIcon??false
-              ? const WidgetStatePropertyAll(
-                  EdgeInsetsDirectional.symmetric(horizontal: 15, vertical: 15),
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        elevation: const WidgetStatePropertyAll(0),
+        alignment: AlignmentGeometry.center,
+        padding: isChildIcon??false
+            ? const WidgetStatePropertyAll(
+                EdgeInsetsDirectional.symmetric(horizontal: 15, vertical: 15),
+              )
+            : WidgetStatePropertyAll(
+            padding
+              ),
+        shape: WidgetStatePropertyAll(
+          isChildIcon??false
+              ? ContinuousRectangleBorder(
+                  borderRadius: BorderRadiusGeometry.circular(borderRadius??20),
                 )
-              : WidgetStatePropertyAll(
-                  EdgeInsetsDirectional.symmetric(
-                    horizontal: width??140,
-                    vertical: 20,
-                  ),
+              : RoundedSuperellipseBorder(
+                  borderRadius: BorderRadiusGeometry.circular(borderRadius??60),
                 ),
-          shape: WidgetStatePropertyAll(
-            isChildIcon??false
-                ? ContinuousRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(20),
-                  )
-                : RoundedSuperellipseBorder(
-                    borderRadius: BorderRadiusGeometry.circular(borderRadius??60),
-                  ),
-          ),
-          backgroundColor: WidgetStatePropertyAll(color ?? ColorScheme.of(context).primary),
         ),
-        child: child,
+        backgroundColor: WidgetStatePropertyAll(color ?? ColorScheme.of(context).primary),
       ),
+      child: child,
     );
   }
 }

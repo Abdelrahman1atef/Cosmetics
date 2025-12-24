@@ -9,7 +9,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../core/widgets/app_Image.dart';
-import '../features/auth/register.dart';
+import '../features/auth/register/cubit.dart';
 import 'login.dart';
 
 class VerifyCodePage extends StatelessWidget {

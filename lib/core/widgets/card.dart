@@ -15,6 +15,8 @@ class CustomCard extends StatelessWidget {
       onTap: () {},
       child: Container(
         padding: const EdgeInsetsGeometry.all(10),
+        width: 180,
+        height: 240,
         decoration: BoxDecoration(
           color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadiusGeometry.circular(16),
@@ -27,7 +29,6 @@ class CustomCard extends StatelessWidget {
             ),
           ],
         ),
-
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -35,8 +36,7 @@ class CustomCard extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-
-                  child: AppImage(image: image, fit: BoxFit.cover),
+                  child: Center(child: AppImage(image: image, fit: BoxFit.cover,height: 200,width: 200,)),
                 ),
                 Positioned(
                   top: 0,
